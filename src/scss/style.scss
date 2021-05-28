@@ -1,0 +1,70 @@
+@import "_variables";
+@import "_mixins";
+@import "_extends";
+
+// SCSS: variables
+body {
+  background: $bg;
+}
+
+h1 {
+  font-weight: $title;
+}
+
+// SCSS: nesting
+.box {
+  margin-top: 20px;
+  h2 {
+    color: blue;
+    &:hover {
+      color: red;
+    }
+  }
+  button {
+    color: red;
+  }
+  &:hover {
+    background: green;
+  }
+}
+
+// SCSS: mixins
+h1 {
+  @include title();
+}
+
+a {
+  margin-bottom: 10px;
+  &:nth-child(odd) {
+    @include link(black);
+  }
+  &:nth-child(even) {
+    @include link(white);
+  }
+}
+
+// SCSS: extends
+h3 {
+  @extend %h3;
+}
+
+h4 {
+  @extend %h3;
+}
+
+// SCSS: responsive mixins
+h5 {
+  color: purple;
+  @include responsive("iphone") {
+    color: green;
+  }
+  @include responsive("iphone-l") {
+    font-size: 60px;
+  }
+  @include responsive("ipad") {
+    color: blue;
+  }
+  @include responsive("ipad-l") {
+    font-size: 80px;
+  }
+}

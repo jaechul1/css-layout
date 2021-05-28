@@ -1,0 +1,36 @@
+@mixin title {
+  color: peru;
+  font-size: 40px;
+}
+
+@mixin link($color) {
+  text-decoration: none;
+  display: block;
+  color: $color;
+}
+
+// just for example, not official size, of course
+$minIphone: 500px;
+$maxIphone: 700px;
+$minIpad: 600px;
+$maxIpad: 1100px;
+
+@mixin responsive($device) {
+  @if $device == "iphone" {
+    @media screen and (min-width: $minIphone) and (max-width: $maxIphone) {
+      @content;
+    }
+  } @else if $device == "ipad" {
+    @media screen and (min-width: $minIpad) and (max-width: $maxIpad) {
+      @content;
+    }
+  } @else if $device == "iphone-l" {
+    @media screen and (min-height: $minIphone) and (max-height: $maxIphone) and (orientation: landscape) {
+      @content;
+    }
+  } @else if $device == "ipad-l" {
+    @media screen and (min-height: $minIpad) and (max-height: $maxIpad) and (orientation: landscape) {
+      @content;
+    }
+  }
+}
